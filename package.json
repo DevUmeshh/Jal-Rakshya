@@ -1,0 +1,17 @@
+{
+  "name": "jalrakshya",
+  "version": "1.0.0",
+  "description": "JalRakshya – Intelligent Groundwater Monitoring & Decision Support System",
+  "private": true,
+  "scripts": {
+    "install:server": "cd server && npm install",
+    "install:client": "cd client && npm install",
+    "install:all": "npm run install:server && npm run install:client",
+    "seed": "cd server && npm run seed",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm start",
+    "build:client": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "vercel-build": "cd client && npm install && npm run build"
+  }
+}

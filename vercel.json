@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "buildCommand": "cd client && CI=false npm run build",
+  "outputDirectory": "client/build",
+  "installCommand": "npm install && cd server && npm install && cd ../client && npm install",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "new_nsk_gwater.csv",
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

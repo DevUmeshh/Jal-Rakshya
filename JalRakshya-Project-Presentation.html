@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JalRakshya – Project Presentation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      background: #f8fafc;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { box-shadow: none !important; margin: 0 !important; page-break-after: always; }
+      .page:last-child { page-break-after: avoid; }
+      .no-print { display: none !important; }
+    }
+
+    .page {
+      max-width: 850px;
+      margin: 30px auto;
+      background: white;
+      padding: 50px 55px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      page-break-after: always;
+    }
+
+    .page:last-child { page-break-after: avoid; }
+
+    /* ─── COVER PAGE ─── */
+    .cover {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 700px;
+      text-align: center;
+      background: linear-gradient(135deg, #0369a1 0%, #0ea5e9 50%, #38bdf8 100%);
+      color: white;
+      border-radius: 8px;
+    }
+    .cover-icon { font-size: 72px; margin-bottom: 20px; }
+    .cover h1 { font-size: 42px; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+    .cover .tagline { font-size: 18px; font-weight: 300; opacity: 0.9; margin-bottom: 40px; max-width: 500px; }
+    .cover .meta { font-size: 14px; opacity: 0.75; }
+    .cover .meta strong { font-weight: 600; opacity: 1; }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-top: 18px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ─── HEADINGS ─── */
+    h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #0ea5e9;
+      display: inline-block;
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      color: #334155;
+      margin: 20px 0 8px;
+    }
+
+    /* ─── CONTENT ─── */
+    p { margin-bottom: 10px; font-size: 14.5px; color: #475569; }
+    ul { margin: 8px 0 14px 20px; }
+    li { font-size: 14px; color: #475569; margin-bottom: 5px; }
+    li strong { color: #1e293b; }
+
+    /* ─── TECH STACK TABLE ─── */
+    .tech-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 14px 0 20px;
+      font-size: 14px;
+    }
+    .tech-table th {
+      background: #0369a1;
+      color: white;
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .tech-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      color: #334155;
+    }
+    .tech-table tr:nth-child(even) td { background: #f1f5f9; }
+    .tech-table tr:hover td { background: #e0f2fe; }
+
+    /* ─── CARDS ─── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 14px 0;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      border-left: 4px solid #0ea5e9;
+    }
+    .card h4 { font-size: 14px; font-weight: 600; color: #0369a1; margin-bottom: 6px; }
+    .card p { font-size: 13px; margin-bottom: 0; }
+
+    .card.green { border-left-color: #22c55e; }
+    .card.yellow { border-left-color: #eab308; }
+    .card.red { border-left-color: #ef4444; }
+    .card.purple { border-left-color: #8b5cf6; }
+
+    /* ─── FLOW ─── */
+    .flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    .flow-box {
+      background: #0369a1;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .flow-arrow { color: #94a3b8; font-size: 20px; font-weight: 700; }
+
+    /* ─── FORMULA BOX ─── */
+    .formula {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #0c4a6e;
+      margin: 10px 0 16px;
+    }
+
+    /* ─── SCORE TABLE ─── */
+    .score-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .score-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .score-dot.green { background: #22c55e; }
+    .score-dot.yellow { background: #eab308; }
+    .score-dot.red { background: #ef4444; }
+
+    .section-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px; height: 28px;
+      background: #0ea5e9;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-top: 30px;
+      padding-top: 14px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      border-radius: 10px;
+      padding: 18px;
+      margin: 14px 0;
+      border: 1px solid #bae6fd;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .stat-box {
+      text-align: center;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+    }
+    .stat-box .num { font-size: 28px; font-weight: 800; color: #0369a1; }
+    .stat-box .label { font-size: 12px; color: #64748b; margin-top: 2px; }
+
+    .print-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #0369a1;
+      color: white;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(3,105,161,0.3);
+      z-index: 100;
+      transition: transform 0.2s;
+    }
+    .print-btn:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn no-print" onclick="window.print()">📄 Save as PDF (Ctrl+P)</button>
+
+  <!-- ═══════════════════ PAGE 1: COVER ═══════════════════ -->
+  <div class="page cover">
+    <div class="cover-icon">💧</div>
+    <h1>JalRakshya</h1>
+    <p class="tagline">Intelligent Groundwater Monitoring &amp; Decision Support System</p>
+    <div class="badge">🏆 Hackathon Project Presentation</div>
+    <div style="margin-top: 40px;">
+      <p class="meta"><strong>Domain:</strong> Water Resource Management &amp; Environmental Tech</p>
+      <p class="meta"><strong>Region:</strong> Nashik District, Maharashtra, India</p>
+      <p class="meta"><strong>Dataset:</strong> 316 Records | 105+ Locations | 2018–2020</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ PAGE 2: PROBLEM & SOLUTION ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">1</span> Problem Statement</h2>
+    <p>India faces a severe groundwater crisis — over <strong>60% of districts</strong> experience declining water tables. In Nashik district, Maharashtra, farmers and administrators lack a <strong>centralized, real-time monitoring system</strong> to track groundwater health, detect risks early, and make data-driven decisions.</p>
+    
+    <h3>Key Challenges:</h3>
+    <ul>
+      <li><strong>No unified dashboard</strong> — data is scattered across departments</li>
+      <li><strong>No smart alerts</strong> — drought and over-extraction go undetected until it's too late</li>
+      <li><strong>No predictive insights</strong> — no way to forecast future water levels</li>
+      <li><strong>No easy comparison</strong> — can't compare locations side by side</li>
+    </ul>
+
+    <h2 style="margin-top: 30px;"><span class="section-number">2</span> Our Solution – JalRakshya</h2>
+    <p><strong>JalRakshya</strong> (meaning "Water Guardian" in Sanskrit) is a <strong>full-stack web application</strong> that provides:</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h4>📊 Smart Dashboard</h4>
+        <p>Power BI-style real-time dashboard with KPI cards, gauges, and interactive maps</p>
+      </div>
+      <div class="card green">
+        <h4>🚨 Intelligent Alerts</h4>
+        <p>Auto-generated alerts for drought risk, over-extraction, pH imbalance, and low rainfall</p>
+      </div>
+      <div class="card yellow">
+        <h4>🔮 Predictive Analytics</h4>
+        <p>Linear regression-based forecasts to predict future groundwater levels</p>
+      </div>
+      <div class="card purple">
+        <h4>📄 PDF Reports</h4>
+        <p>One-click downloadable PDF reports for any location's water analysis</p>
+      </div>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">105+</div>
+        <div class="label">Locations Monitored</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">316</div>
+        <div class="label">Data Records</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">12+</div>
+        <div class="label">Analytics Components</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ PAGE 3: TECH STACK ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">3</span> Technology Stack</h2>
+    <p>We built JalRakshya using a modern <strong>MERN-inspired</strong> architecture with the following technologies:</p>
+
+    <table class="tech-table">
+      <thead>
+        <tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Frontend Framework</strong></td><td>React 18</td><td>Component-based UI with hooks &amp; context API</td></tr>
+        <tr><td><strong>Styling</strong></td><td>Tailwind CSS 3.4</td><td>Utility-first responsive design + dark mode</td></tr>
+        <tr><td><strong>Animations</strong></td><td>Framer Motion</td><td>Smooth page transitions &amp; UI animations</td></tr>
+        <tr><td><strong>Charts &amp; Graphs</strong></td><td>Chart.js + Recharts</td><td>Bar, line, doughnut, scatter, multi-axis charts</td></tr>
+        <tr><td><strong>Maps</strong></td><td>Google Maps API + Leaflet</td><td>Interactive color-coded location markers</td></tr>
+        <tr><td><strong>Routing</strong></td><td>React Router v6</td><td>Client-side navigation with animated transitions</td></tr>
+        <tr><td><strong>HTTP Client</strong></td><td>Axios</td><td>API calls from frontend to backend</td></tr>
+        <tr><td><strong>Notifications</strong></td><td>React Hot Toast</td><td>User-friendly toast notifications</td></tr>
+        <tr><td><strong>Icons</strong></td><td>React Icons (Feather)</td><td>Clean, minimal SVG icons</td></tr>
+        <tr><td><strong>PDF Generation</strong></td><td>jsPDF + html2canvas</td><td>Export dashboard reports as downloadable PDFs</td></tr>
+        <tr><td><strong>Backend Runtime</strong></td><td>Node.js</td><td>Server-side JavaScript runtime</td></tr>
+        <tr><td><strong>Backend Framework</strong></td><td>Express.js</td><td>REST API with middleware (CORS, Morgan logger)</td></tr>
+        <tr><td><strong>Database</strong></td><td>MongoDB + Mongoose</td><td>NoSQL document storage with schema validation</td></tr>
+        <tr><td><strong>File Upload</strong></td><td>Multer</td><td>CSV file upload &amp; processing</td></tr>
+        <tr><td><strong>CSV Parsing</strong></td><td>csv-parser</td><td>Parse groundwater CSV dataset into DB records</td></tr>
+        <tr><td><strong>Caching</strong></td><td>node-cache</td><td>In-memory caching for fast API responses</td></tr>
+        <tr><td><strong>Deployment</strong></td><td>Vercel</td><td>Serverless deployment with auto-scaling</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Architecture Pattern</h3>
+    <div class="flow">
+      <div class="flow-box">React UI<br><small>Client</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Axios<br><small>HTTP</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Express API<br><small>REST</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">MongoDB<br><small>Database</small></div>
+    </div>
+    <div class="flow">
+      <div class="flow-box">CSV Data<br><small>Source</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">csv-parser<br><small>ETL</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">Seed Script<br><small>Loader</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">MongoDB<br><small>Storage</small></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ PAGE 4: FEATURES ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">4</span> Key Features</h2>
+
+    <h3>🏠 Page 1 – Home Page</h3>
+    <ul>
+      <li>Hero section with <strong>location search &amp; autocomplete</strong></li>
+      <li>District-level <strong>statistics overview</strong> (total locations, avg. water level, etc.)</li>
+      <li>Quick access to <strong>popular/critical locations</strong></li>
+    </ul>
+
+    <h3>📊 Page 2 – Smart Dashboard (per location)</h3>
+    <ul>
+      <li><strong>Interactive Google Map</strong> with color-coded markers (Green = Safe, Yellow = Warning, Red = Critical)</li>
+      <li><strong>5 KPI Cards</strong>: Water Level, Rainfall, Depletion Rate, pH, Water Score</li>
+      <li><strong>Water Health Score Gauge</strong> (0–100 scale) with A–F grading</li>
+      <li><strong>Smart Alerts Panel</strong> — auto-detects drought, over-extraction, pH imbalance</li>
+      <li><strong>Government Updates</strong> from simulated sources</li>
+      <li><strong>Year-wise Data Table</strong> with sorting capability</li>
+    </ul>
+
+    <h3>📈 Page 3 – Advanced Analytics (per location)</h3>
+    <ul>
+      <li><strong>Drill-Down Chart</strong> — click to explore deeper data layers</li>
+      <li><strong>Trend Indicators</strong> — rising/falling trends with YoY change</li>
+      <li><strong>Forecast Chart</strong> — linear regression predictions for future years</li>
+      <li><strong>Multi-Axis Chart</strong> — rainfall vs water level vs depletion on one chart</li>
+      <li><strong>Risk Score Gauge</strong> — visual risk indicator with sub-indices</li>
+      <li><strong>Location Comparison</strong> — side-by-side analysis of two locations</li>
+      <li><strong>Smart Insight Panel</strong> — AI-style data observations &amp; recommendations</li>
+      <li><strong>Outlier Alert Chart</strong> — highlights anomalous data points</li>
+      <li><strong>Story Mode</strong> — narrative walkthrough of the data</li>
+      <li><strong>Time Slider Animation</strong> — animate data changes across years</li>
+      <li><strong>Advanced Filter Panel</strong> — filter by year, usage type, rainfall range</li>
+      <li><strong>PDF Export</strong> — download full analysis report</li>
+    </ul>
+
+    <h3>🌙 UI/UX Features</h3>
+    <ul>
+      <li><strong>Dark/Light Mode</strong> with system preference detection</li>
+      <li><strong>Glassmorphism</strong> card design (frosted glass effect)</li>
+      <li><strong>Smooth page transitions</strong> using Framer Motion</li>
+      <li><strong>Fully responsive</strong> design for mobile, tablet, desktop</li>
+      <li><strong>Loading spinners &amp; skeleton states</strong> for better UX</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════ PAGE 5: BUSINESS LOGIC ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">5</span> Business Logic &amp; Algorithms</h2>
+
+    <h3>💧 Water Health Score (0–100)</h3>
+    <p>Each location gets a composite score based on 4 parameters with weighted contribution:</p>
+    <div class="formula">
+      Water Score = (Water Level × 0.35) + (Rainfall × 0.25) + (Depletion × 0.30) + (pH × 0.10)
+    </div>
+    <p>Each metric is <strong>normalized to 0–100</strong>. Water Level and Depletion are inverted (lower = better). pH is scored by deviation from ideal (7.0).</p>
+
+    <div class="card-grid" style="margin-top: 16px;">
+      <div class="card">
+        <h4>Water Level — 35% weight</h4>
+        <p>Depth below ground (4–20m range). Shallower = more available water = higher score.</p>
+      </div>
+      <div class="card green">
+        <h4>Rainfall — 25% weight</h4>
+        <p>Annual rainfall (500–1500mm). More rain = better recharge = higher score.</p>
+      </div>
+      <div class="card yellow">
+        <h4>Depletion Rate — 30% weight</h4>
+        <p>Extraction rate (0–10%). Lower extraction = more sustainable = higher score.</p>
+      </div>
+      <div class="card purple">
+        <h4>pH Level — 10% weight</h4>
+        <p>Closer to 7.0 is better. Deviation reduces score.</p>
+      </div>
+    </div>
+
+    <h3>🚦 Status Classification</h3>
+    <div class="score-row">
+      <span class="score-dot green"></span>
+      <strong style="font-size:14px;">Safe (Score ≥ 70)</strong>
+      <span style="font-size:13px; color:#64748b; margin-left:8px;">— Healthy groundwater conditions</span>
+    </div>
+    <div class="score-row">
+      <span class="score-dot yellow"></span>
+      <strong style="font-size:14px;">Warning (Score 40–69)</strong>
+      <span style="font-size:13px; color:#64748b; margin-left:8px;">— Needs monitoring and conservation</span>
+    </div>
+    <div class="score-row">
+      <span class="score-dot red"></span>
+      <strong style="font-size:14px;">Critical (Score &lt; 40)</strong>
+      <span style="font-size:13px; color:#64748b; margin-left:8px;">— Immediate action required</span>
+    </div>
+
+    <h3 style="margin-top: 24px;">🚨 Alert Engine Thresholds</h3>
+    <table class="tech-table">
+      <thead>
+        <tr><th>Metric</th><th>⚠️ Warning</th><th>🚨 Critical</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Water Level (depth)</td><td>≥ 12 meters</td><td>≥ 15 meters</td></tr>
+        <tr><td>Depletion Rate</td><td>≥ 5%</td><td>≥ 7%</td></tr>
+        <tr><td>Rainfall</td><td>≤ 700mm</td><td>≤ 600mm</td></tr>
+        <tr><td>pH Level</td><td>&lt; 6.5 or &gt; 8.0</td><td>—</td></tr>
+        <tr><td>Consumption</td><td>≥ 500 Ml</td><td>—</td></tr>
+      </tbody>
+    </table>
+
+    <h3>🔮 Prediction Model</h3>
+    <p>Uses <strong>Linear Regression</strong> on historical data to forecast groundwater level, rainfall, and depletion rate for upcoming years. The model calculates slope and intercept from past year data points and extrapolates forward.</p>
+  </div>
+
+  <!-- ═══════════════════ PAGE 6: API + DATASET ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">6</span> REST API Endpoints</h2>
+    <p>The backend exposes <strong>11 RESTful API endpoints</strong>:</p>
+
+    <table class="tech-table">
+      <thead>
+        <tr><th>Method</th><th>Endpoint</th><th>What It Does</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>GET</td><td>/api/locations</td><td>List all 105+ locations (with search)</td></tr>
+        <tr><td>GET</td><td>/api/locations/:name</td><td>Get details of a specific location</td></tr>
+        <tr><td>GET</td><td>/api/water/:location</td><td>All year-wise data for a location</td></tr>
+        <tr><td>GET</td><td>/api/water/:location/latest</td><td>Most recent year's data</td></tr>
+        <tr><td>GET</td><td>/api/water/:location/alerts</td><td>Auto-generated smart alerts</td></tr>
+        <tr><td>GET</td><td>/api/water/:location/gov-updates</td><td>Government updates &amp; schemes</td></tr>
+        <tr><td>GET</td><td>/api/water/:location/predictions</td><td>Future year predictions</td></tr>
+        <tr><td>GET</td><td>/api/water/compare?loc1=&amp;loc2=</td><td>Compare two locations side by side</td></tr>
+        <tr><td>GET</td><td>/api/water/overview/all</td><td>All locations overview (for map)</td></tr>
+        <tr><td>GET</td><td>/api/water/stats/district</td><td>District-level aggregate statistics</td></tr>
+        <tr><td>POST</td><td>/api/upload/csv</td><td>Upload &amp; ingest new CSV data</td></tr>
+      </tbody>
+    </table>
+
+    <h2 style="margin-top: 30px;"><span class="section-number">7</span> Dataset Details</h2>
+    <p>Real-world groundwater data from <strong>Nashik District, Maharashtra</strong>:</p>
+
+    <div class="highlight-box">
+      <strong>Source File:</strong> nsk_groundwater.csv<br>
+      <strong>Records:</strong> 316 entries across 105+ locations<br>
+      <strong>Time Period:</strong> 2018 – 2020 (3 years)<br>
+      <strong>Data Points per Record:</strong> 12 columns
+    </div>
+
+    <h3>Data Columns:</h3>
+    <table class="tech-table">
+      <thead>
+        <tr><th>Column</th><th>Type</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Location</td><td>Text</td><td>Nashik City, Sinnar, Dindori</td></tr>
+        <tr><td>Year</td><td>Number</td><td>2018, 2019, 2020</td></tr>
+        <tr><td>Consumption (Ml)</td><td>Number</td><td>Total water consumption</td></tr>
+        <tr><td>Per Capita Usage (l/day)</td><td>Number</td><td>Per person daily usage</td></tr>
+        <tr><td>Agricultural Usage (Ml)</td><td>Number</td><td>Farm irrigation usage</td></tr>
+        <tr><td>Industrial Usage (Ml)</td><td>Number</td><td>Factory/industry usage</td></tr>
+        <tr><td>Household Usage (Ml)</td><td>Number</td><td>Domestic usage</td></tr>
+        <tr><td>Rainfall (mm)</td><td>Number</td><td>Annual rainfall</td></tr>
+        <tr><td>Depletion Rate (%)</td><td>Number</td><td>Groundwater extraction rate</td></tr>
+        <tr><td>Water Scarcity Level</td><td>Text</td><td>Low / Moderate / High / Severe</td></tr>
+        <tr><td>pH</td><td>Number</td><td>Water acidity level</td></tr>
+        <tr><td>Groundwater Level (m)</td><td>Number</td><td>Depth below ground surface</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════ PAGE 7: ARCHITECTURE + DEPLOYMENT ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">8</span> System Architecture</h2>
+
+    <div class="flow" style="margin: 20px 0;">
+      <div class="flow-box" style="background:#7c3aed;">User / Browser</div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box">React 18 SPA<br><small>Tailwind + Framer Motion</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="background:#059669;">Express.js API<br><small>REST Endpoints</small></div>
+      <span class="flow-arrow">→</span>
+      <div class="flow-box" style="background:#dc2626;">MongoDB<br><small>Mongoose ODM</small></div>
+    </div>
+
+    <h3>Frontend Architecture:</h3>
+    <ul>
+      <li><strong>3 Pages</strong>: Home → Dashboard → Analytics</li>
+      <li><strong>20+ Components</strong>: Reusable, modular React components</li>
+      <li><strong>2 Context Providers</strong>: LocationContext (selected location state) + ThemeContext (dark/light mode)</li>
+      <li><strong>Utility Modules</strong>: API client, helpers, PDF report generator</li>
+    </ul>
+
+    <h3>Backend Architecture:</h3>
+    <ul>
+      <li><strong>MVC Pattern</strong>: Models → Controllers → Routes</li>
+      <li><strong>2 Mongoose Models</strong>: Location, WaterData</li>
+      <li><strong>3 Route Files</strong>: waterRoutes, locationRoutes, uploadRoutes</li>
+      <li><strong>4 Utility Engines</strong>: Alert Engine, Water Score Calculator, CSV Parser, Seed Data</li>
+      <li><strong>Middleware</strong>: CORS, Morgan (logging), Body Parser, Error Handler</li>
+      <li><strong>In-memory caching</strong> via node-cache for fast responses</li>
+    </ul>
+
+    <h2 style="margin-top: 30px;"><span class="section-number">9</span> Deployment</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h4>☁️ Vercel (Production)</h4>
+        <p>Serverless deployment with the Express API wrapped as a single Vercel serverless function. Auto-scaling, zero config, global CDN.</p>
+      </div>
+      <div class="card green">
+        <h4>🐳 Docker Ready</h4>
+        <p>Dockerfile provided for containerized deployment. Can run anywhere — AWS, GCP, Azure, or on-premise.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 30px;"><span class="section-number">10</span> Project Structure Summary</h2>
+    <div class="highlight-box" style="font-family: 'Courier New', monospace; font-size: 12.5px; line-height: 1.8;">
+      Jal-Rakshya/<br>
+      ├── client/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # React Frontend<br>
+      │ &nbsp;&nbsp;├── src/components/ &nbsp;&nbsp;&nbsp; # 20+ UI components<br>
+      │ &nbsp;&nbsp;├── src/pages/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Home, Dashboard, Analytics<br>
+      │ &nbsp;&nbsp;├── src/context/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Location &amp; Theme state<br>
+      │ &nbsp;&nbsp;└── src/utils/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # API, helpers, PDF<br>
+      ├── server/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Node.js Backend<br>
+      │ &nbsp;&nbsp;├── controllers/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Business logic handlers<br>
+      │ &nbsp;&nbsp;├── models/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # MongoDB schemas<br>
+      │ &nbsp;&nbsp;├── routes/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # API route definitions<br>
+      │ &nbsp;&nbsp;└── utils/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Alert engine, scoring, CSV<br>
+      ├── api/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Vercel serverless entry<br>
+      ├── nsk_groundwater.csv &nbsp;&nbsp;&nbsp; # Source dataset<br>
+      └── vercel.json &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Deployment config
+    </div>
+  </div>
+
+  <!-- ═══════════════════ PAGE 8: IMPACT + THANK YOU ═══════════════════ -->
+  <div class="page">
+    <h2><span class="section-number">11</span> Impact &amp; Use Cases</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <h4>👨‍🌾 Farmers</h4>
+        <p>Check water availability before planting decisions. Get drought early warnings.</p>
+      </div>
+      <div class="card green">
+        <h4>🏛️ Government Officials</h4>
+        <p>Monitor district-wide groundwater health. Prioritize areas needing intervention.</p>
+      </div>
+      <div class="card yellow">
+        <h4>🔬 Researchers</h4>
+        <p>Analyze trends, compare locations, download reports for environmental studies.</p>
+      </div>
+      <div class="card purple">
+        <h4>🏫 Students &amp; Citizens</h4>
+        <p>Understand local water conditions. Spread awareness about water conservation.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top: 30px;"><span class="section-number">12</span> What Makes JalRakshya Unique?</h2>
+    <ul>
+      <li>✅ <strong>Real dataset</strong> — not dummy data, actual Nashik district groundwater records</li>
+      <li>✅ <strong>Full-stack production app</strong> — not just a prototype, it's deployable</li>
+      <li>✅ <strong>12+ analytics components</strong> — Power BI-level depth in a web app</li>
+      <li>✅ <strong>Smart Alert Engine</strong> — auto-detects 5+ risk types with actionable recommendations</li>
+      <li>✅ <strong>Predictive forecasting</strong> — linear regression to project future water levels</li>
+      <li>✅ <strong>Composite Water Health Score</strong> — weighted multi-factor assessment (not just one metric)</li>
+      <li>✅ <strong>PDF report export</strong> — professional downloadable reports</li>
+      <li>✅ <strong>Dark mode + Glassmorphism</strong> — modern, polished UI/UX</li>
+      <li>✅ <strong>CSV upload</strong> — extensible to other districts and datasets</li>
+      <li>✅ <strong>Serverless ready</strong> — deployed on Vercel with auto-scaling</li>
+    </ul>
+
+    <h2 style="margin-top: 30px;"><span class="section-number">13</span> Future Scope</h2>
+    <ul>
+      <li>🔄 Real-time sensor integration (IoT devices for live monitoring)</li>
+      <li>🤖 ML-based anomaly detection using TensorFlow.js</li>
+      <li>📱 Mobile app using React Native</li>
+      <li>🌐 Expand to all districts of Maharashtra and beyond</li>
+      <li>🔔 SMS/Email alert notifications for critical conditions</li>
+      <li>🛰️ Satellite imagery integration for remote sensing data</li>
+    </ul>
+
+    <div style="text-align: center; margin-top: 50px; padding: 30px; background: linear-gradient(135deg, #0369a1, #0ea5e9); border-radius: 14px; color: white;">
+      <div style="font-size: 36px; margin-bottom: 10px;">💧</div>
+      <h2 style="color: white; border: none; font-size: 28px; display: block; padding: 0; margin-bottom: 8px;">Thank You!</h2>
+      <p style="color: rgba(255,255,255,0.9); font-size: 16px; margin: 0;"><strong>JalRakshya</strong> — Protecting Water, Empowering Decisions</p>
+      <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 12px;">Built with ❤️ for Hackathon</p>
+    </div>
+
+    <div class="footer">
+      JalRakshya – Intelligent Groundwater Monitoring &amp; Decision Support System | Hackathon 2026
+    </div>
+  </div>
+
+</body>
+</html>
